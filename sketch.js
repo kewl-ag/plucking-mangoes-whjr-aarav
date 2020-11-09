@@ -58,11 +58,6 @@ function draw() {
 
   Engine.update(engine);
 
-  d(stone,m1);
-  d(stone,m2);
-  d(stone,m3);
-  d(stone,m4);
-  d(stone,m5);
   
   drawSprites();
  
@@ -75,7 +70,14 @@ m3.display();
 m4.display();
 m5.display();
 
+d(stone,m1);
+  d(stone,m2);
+  d(stone,m3);
+  d(stone,m4);
+  d(stone,m5);
+
 }
+
 
 function mouseDragged(){
 	Matter.Body.setPosition(stone.body,{x:mouseX,y:mouseY})
@@ -101,12 +103,18 @@ function d(lstone,lmango){
 	mangoBodyPosition = lmango.body.position;
     stoneBodyPosition = lstone.body.position;
 
-var distnce = dist(stoneBodyPosition.x,stoneBodyPosition.y,mangoBodyPosition.x,mangoBodyPosition.y)
+var distance = 0;
 
-if(distance <= lmango.r+lstone.r){
+ distance = dist(stoneBodyPosition.x,stoneBodyPosition.y,mangoBodyPosition.x,mangoBodyPosition.y)
 
+console.log(distance);
+//console.log(lmango.r + lstone.r);
 
-Matter.Body.setStatic(lmango.body = false)
+if(distance < lmango.r+lstone.r){
+
+console.log(distance < lmango.r+lstone.r);
+
+Matter.Body.setStatic(lmango.body,false)
 
 }
 
